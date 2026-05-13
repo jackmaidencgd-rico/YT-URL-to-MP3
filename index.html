@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube to MP3 Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Legal Disclaimer Modal -->
+    <div id="disclaimerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>⚠️ Important Legal Disclaimer</h2>
+            </div>
+            <div class="modal-body">
+                <p><strong>BEFORE USING THIS TOOL, YOU MUST AGREE:</strong></p>
+                
+                <div class="disclaimer-text">
+                    <h3>Legal Terms:</h3>
+                    <ul>
+                        <li>This tool should <strong>ONLY</strong> be used for music that is:
+                            <ul>
+                                <li>✅ Royalty-free or Creative Commons licensed</li>
+                                <li>✅ Music you own or created</li>
+                                <li>✅ Music with explicit permission to download</li>
+                                <li>✅ Public domain content</li>
+                            </ul>
+                        </li>
+                        <li><strong>❌ DO NOT</strong> use to download copyrighted music without permission</li>
+                        <li>Downloading copyrighted content without permission is <strong>ILLEGAL in many countries</strong></li>
+                        <li>Violates YouTube's Terms of Service</li>
+                        <li>May result in legal action by copyright holders</li>
+                    </ul>
+                </div>
+
+                <div class="disclaimer-text">
+                    <h3>User Responsibility:</h3>
+                    <p>By using this tool, you agree that:</p>
+                    <ul>
+                        <li>You understand the legal implications</li>
+                        <li>You are solely responsible for your usage</li>
+                        <li>The creator assumes NO liability for misuse</li>
+                        <li>You will comply with all applicable laws</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="declineBtn" class="btn btn-secondary">Decline</button>
+                <button id="acceptBtn" class="btn btn-primary">I Understand - Accept</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent" class="container hidden">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🎵 YouTube to MP3 Converter</h1>
+                <p class="subtitle">Extract MP3 files from YouTube videos</p>
+                <div class="legal-badge">
+                    <span>⚠️ Legal Use Only - Royalty-Free Content</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Section -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <section class="input-section">
+                <h2>Step 1: Enter YouTube URL</h2>
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="youtubeUrl" 
+                        class="url-input" 
+                        placeholder="Paste YouTube URL here... (e.g., https://www.youtube.com/watch?v=...)"
+                        autocomplete="off"
+                    >
+                    <button id="convertBtn" class="btn btn-primary">Convert to MP3</button>
+                </div>
+                <div class="url-formats">
+                    <small>✓ Supported: youtube.com/watch?v= | youtu.be/ | youtube.com/embed/</small>
+                </div>
+                <div id="errorMessage" class="error-message hidden"></div>
+                <div id="loadingIndicator" class="loading hidden">
+                    <div class="spinner"></div>
+                    <span>Processing video...</span>
+                </div>
+            </section>
+
+            <!-- Metadata Section -->
+            <section id="metadataSection" class="metadata-section hidden">
+                <h2>Step 2: Video Information</h2>
+                <div class="metadata-grid">
+                    <div class="metadata-item">
+                        <label>📹 Video Title</label>
+                        <div id="videoTitle" class="metadata-value">-</div>
+                    </div>
+                    <div class="metadata-item">
+                        <label>🎤 Artist Name</label>
+                        <div id="artistName" class="metadata-value">-</div>
+                    </div>
+                    <div class="metadata-item">
+                        <label>💿 Album Name</label>
+                        <div id="albumName" class="metadata-value">-</div>
+                    </div>
+                    <div class="metadata-item">
+                        <label>⏱️ Duration</label>
+                        <div id="duration" class="metadata-value">-</div>
+                    </div>
+                    <div class="metadata-item full-width">
+                        <label>📄 File Name</label>
+                        <div id="fileName" class="metadata-value">-</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Download Section -->
+            <section id="downloadSection" class="download-section hidden">
+                <h2>Step 3: Download MP3</h2>
+                <button id="downloadBtn" class="btn btn-success btn-large">
+                    ⬇️ Download MP3 File
+                </button>
+                <p class="download-info">Your MP3 file will be saved to your Downloads folder</p>
+            </section>
+
+            <!-- Instructions -->
+            <section class="instructions-section">
+                <h2>📖 How to Use</h2>
+                <ol>
+                    <li>Paste a YouTube URL containing <strong>royalty-free or Creative Commons licensed music</strong></li>
+                    <li>Click "Convert to MP3" to extract video information</li>
+                    <li>Review the metadata (title, artist, album, duration)</li>
+                    <li>Click "Download MP3" to save the file to your computer</li>
+                </ol>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <h2>❓ FAQ</h2>
+                <div class="faq-item">
+                    <h3>Can I use this for any YouTube video?</h3>
+                    <p><strong>No.</strong> Only use for videos containing royalty-free, Creative Commons, or publicly available music that you have permission to download.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is this legal?</h3>
+                    <p>Using this tool is only legal for content you have permission to download. Downloading copyrighted content without permission violates copyright law.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What metadata can be extracted?</h3>
+                    <p>Video title, artist name, album name, duration, and file name are extracted and can be used to tag the MP3 file.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How long does conversion take?</h3>
+                    <p>Conversion typically takes 30-120 seconds depending on the video length and your internet speed.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What if the download doesn't work?</h3>
+                    <p>Check your browser console (F12) for errors. Ensure pop-ups aren't blocked. Try a different video.</p>
+                </div>
+            </section>
+
+            <!-- Settings -->
+            <section class="settings-section">
+                <h2>⚙️ Settings</h2>
+                <label class="setting-item">
+                    <input type="checkbox" id="autoMetadata" checked>
+                    <span>Auto-detect metadata from video</span>
+                </label>
+                <label class="setting-item">
+                    <input type="checkbox" id="embedTags" checked>
+                    <span>Embed ID3 tags in MP3</span>
+                </label>
+                <button class="btn btn-secondary btn-small" onclick="showDisclaimer()">
+                    View Disclaimer Again
+                </button>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>🎵 YouTube to MP3 Converter | <strong>For legal use only</strong></p>
+            <p style="font-size: 0.9em; color: #999;">
+                Use only for royalty-free, Creative Commons, or authorized content. 
+                The creator assumes no liability for misuse or copyright infringement.
+            </p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
